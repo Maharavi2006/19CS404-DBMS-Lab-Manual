@@ -1,5 +1,6 @@
 # Experiment 2: DDL Commands
-
+# Name: Mahalakshmi.R
+# Reference Number: 212223230117
 ## AIM
 To study and implement DDL commands and different types of constraints.
 
@@ -105,123 +106,198 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+--Create a table named Bonuses with the following constraints:
+BonusID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+BonusAmount as REAL should be greater than 0.
+BonusDate as DATE.
+Reason as TEXT should not be NULL.
 
 ```sql
--- Paste your SQL code below for Question 1
+ CREATE TABLE Bonuses(
+    BonusID INTEGER PRIMARY KEY,
+    EmployeeID INTEGER,
+    BonusAmount REAL CHECK (BonusAmount > 0),
+    BonusDate DATE,
+    Reason TEXT NOT NULL,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
 ```
 
 **Output:**
 
-![Output1](output.png)
+![image](https://github.com/user-attachments/assets/b752a8a7-71eb-444d-821a-d97cd4a3045b)
+
 
 **Question 2**
 ---
--- Paste Question 2 here
+--Write a SQL query to add birth_date attribute as timestamp (datatype) in the table customer 
+
+Sample table: customer
+
+ customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
 
 ```sql
--- Paste your SQL code below for Question 2
+ALTER TABLE customer
+ADD COLUMN birth_date timestamp;
 ```
 
 **Output:**
 
-![Output2](output.png)
+![image](https://github.com/user-attachments/assets/b35033fa-cfbb-4fc8-aa89-a9259dd9034b)
+
 
 **Question 3**
 ---
--- Paste Question 3 here
+Create a table named Shipments with the following constraints:
+ShipmentID as INTEGER should be the primary key.
+ShipmentDate as DATE.
+SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID).
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 
 ```sql
--- Paste your SQL code below for Question 3
+CREATE TABLE Shipments(
+ShipmentID INT PRIMARY KEY,
+ShipmentDate DATE,
+SupplierID INT,
+OrderID INT,
+FOREIGN KEY(SupplierID) REFERENCES Suppliers(SupplierID),
+FOREIGN KEY(OrderID) REFERENCES Orders(OrderID)
+);
 ```
 
 **Output:**
 
-![Output3](output.png)
+![image](https://github.com/user-attachments/assets/2bc28364-bc1e-49ee-8a50-44482f8edbef)
 
 **Question 4**
 ---
--- Paste Question 4 here
+---
+Create a new table named contacts with the following specifications:
+contact_id as INTEGER and primary key.
+first_name as TEXT and not NULL.
+last_name as TEXT and not NULL.
+email as TEXT.
+phone as TEXT and not NULL with a check constraint to ensure the length of phone is at least 10 characters.
 
 ```sql
--- Paste your SQL code below for Question 4
+CREATE TABLE contacts(
+contact_id INT PRIMARY KEY,
+first_name TEXT NOT NULL,
+last_name TEXT NOT NULL,
+email TEXT,
+phone TEXT NOT NULL CHECK(LENGTH(phone)>=10)
+);
 ```
 
 **Output:**
-
-![Output4](output.png)
+![image](https://github.com/user-attachments/assets/d526bab7-9936-4c28-94a6-b9b142e10220)
 
 **Question 5**
 ---
--- Paste Question 5 here
+Write a SQL query to Add a new column Mobilenumber as number in the Student_details table.
 
 ```sql
--- Paste your SQL code below for Question 5
+ALTER TABLE Student_details ADD COLUMN Mobilenumber number;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/e48fa31e-84fa-42f4-82fb-e0a2c64ca70d)
 
-![Output5](output.png)
 
 **Question 6**
 ---
--- Paste Question 6 here
+Create a table named Members with the following columns:
+
+MemberID as INTEGER
+MemberName as TEXT
+JoinDate as DATE
 
 ```sql
--- Paste your SQL code below for Question 6
+CREATE TABLE Members(
+    MemberID INTEGER,
+    MemberName TEXT,
+    JoinDate DATE
+    );
 ```
 
 **Output:**
 
-![Output6](output.png)
+![image](https://github.com/user-attachments/assets/0cbe06e7-b580-4233-9478-dc2dd8f40545)
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Insert a new product with ProductID 101, Name Laptop, Category Electronics, Price 1500, and Stock 50 into the Products table.
 
 ```sql
--- Paste your SQL code below for Question 7
+INSERT INTO products
+(ProductID,Name,Category,Price,Stock) VALUES (101,'Laptop','Electronics',1500,50);
 ```
 
 **Output:**
 
-![Output7](output.png)
+![image](https://github.com/user-attachments/assets/43ba1bc6-a7c2-476a-8beb-7bcaddd01203)
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Write a SQL query to Rename the "city" column to "location" in the "customer" table.
+
+Sample table: customer
+
+ customer_id |   cust_name    |    city    | grade | salesman_id 
+-------------+----------------+------------+-------+-------------
+        3002 | Nick Rimando   | New York   |   100 |        5001
+        3007 | Brad Davis     | New York   |   200 |        5001
+        3005 | Graham Zusi    | California |   200 |        5002
 
 ```sql
--- Paste your SQL code below for Question 8
+ALTER TABLE customer
+RENAME COLUMN city TO location;
 ```
 
 **Output:**
 
-![Output8](output.png)
+![image](https://github.com/user-attachments/assets/835d3cc3-52a4-4fcc-a94b-8231ce4c6c70)
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Create a table named Tasks with the following columns:
 
+TaskID as INTEGER
+TaskName as TEXT
+DueDate as DATE
 ```sql
--- Paste your SQL code below for Question 9
+CREATE TABLE tasks(
+TaskID INTEGER,
+TaskName TEXT,
+DueDate DATE
+);
 ```
 
 **Output:**
-
-![Output9](output.png)
+![image](https://github.com/user-attachments/assets/ab122dad-30d8-4dba-a326-63c562930b80)
 
 **Question 10**
----
--- Paste Question 10 here
+--
+Insert all products from Discontinued_products into Products.
+
+Table attributes are ProductID, ProductName, Price, Stock
 
 ```sql
--- Paste your SQL code below for Question 10
+INSERT INTO Products(ProductID,ProductName,Price,Stock)
+SELECT ProductID,ProductName,Price,Stock FROM Discontinued_products;
 ```
 
 **Output:**
+![image](https://github.com/user-attachments/assets/eff71fa6-f416-454c-965e-fb4186b48fbf)
 
-![Output10](output.png)
 
 
 ## RESULT
